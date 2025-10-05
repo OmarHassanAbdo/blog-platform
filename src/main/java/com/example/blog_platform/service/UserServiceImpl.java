@@ -119,7 +119,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    private User findUser(Long id) {
+    public User findUser(Long id) {
         return userRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("User not found with id: " + id)
         );
