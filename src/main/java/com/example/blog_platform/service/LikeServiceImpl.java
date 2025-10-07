@@ -29,7 +29,7 @@ public class LikeServiceImpl implements LikeService {
     private LikeRepository likeRepository;
 
     @Override
-    public void likePost(Long userId, Long postId) {
+    public Like likePost(Long userId, Long postId) {
         if (likeRepository.existsByUserIdAndPostId(userId, postId)) {
             throw new RuntimeException("User has already liked this post.");
         }
@@ -42,11 +42,11 @@ public class LikeServiceImpl implements LikeService {
         like.setPost(post);
         like.setCreatedAt(LocalDateTime.now());
 
-        likeRepository.save(like);
+        return likeRepository.save(like);
     }
 
     @Override
-    public void likeComment(Long userId, Long commentId) {
+    public Like likeComment(Long userId, Long commentId) {
         if (likeRepository.existsByUserIdAndCommentId(userId, commentId)) {
             throw new RuntimeException("User has already liked this comment.");
         }
@@ -59,7 +59,7 @@ public class LikeServiceImpl implements LikeService {
         like.setComment(comment);
         like.setCreatedAt(LocalDateTime.now());
 
-        likeRepository.save(like);
+       return likeRepository.save(like);
     }
 
     @Override

@@ -11,4 +11,6 @@ public interface PostService {
    public Post getPostById(Long postId);
    public List<Post>listPostsByUser(Long userId);
    public List<Post> searchPosts(String keyword);
+
+   List<Post>getAllPosts();
 }
